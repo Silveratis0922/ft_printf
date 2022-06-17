@@ -1,19 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned_fd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/14 16:29:27 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/17 15:55:03 by tchantro         ###   ########.fr       */
+/*   Created: 2022/06/17 16:39:13 by tchantro          #+#    #+#             */
+/*   Updated: 2022/06/17 16:48:39 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	nbr_len_unsigned(unsigned int n)
 {
-	write (fd, &c, 1);
-	return (1);
+	unsigned int	i;
+
+	i = 1;
+	while (n / 10 != 0)
+	{
+		n = n / 10;
+		i = i * 10;
+	}
+	return (i);
+}
+
+int	ft_putnbr_unsigned_fd(unsigned int n, int fd)
+{
+	int		i;
+	long	j;
+	int	a;
+
+	j = (long)n;
+	i = nbr_len_unsigned(j);
+	a = 0;
+	while (i != 0)
+	{
+		ft_putchar_fd(j / i + '0', fd);
+		j = j % i;
+		i = i / 10;
+		a++;
+	}
+	return (a);
 }

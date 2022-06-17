@@ -1,45 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_hexa_fd.c                                :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/16 11:45:41 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/16 11:57:11 by tchantro         ###   ########.fr       */
+/*   Created: 2022/06/17 11:09:59 by tchantro          #+#    #+#             */
+/*   Updated: 2022/06/17 16:42:30 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	nbr_len(int n)
-{
-	int	i;
+#ifndef	LIBFTPRINTF_H
+# define LIBFTPRINTF_H
+# include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdarg.h>
 
-	i = 1;
-	while (n / 10 != 0)
-	{
-		n = n / 10;
-		i = i * 10;
-	}
-	return (i);
-}
+int	ft_printf(const char *s, ...);
+int	ft_putchar_fd(char c, int fd);
+void	ft_puthexa_fd(int n,char *str, int fd);
+int	ft_putnbr_fd(int n, int fd);
+int	ft_putstr_fd(char *s, int fd);
+size_t	ft_strlen(const char *str);
+int	ft_putnbr_unsigned_fd(unsigned int n, int fd);
 
-void	ft_putnbr_hexa_fd(int n, int fd)
-{
-	int		i;
-	long	j;
-
-
-	j = (long)n;
-	i = nbr_len(j);
-	if (j < 0)
-	{
-		j = -j;
-		ft_putchar_fd('-', fd);
-	}
-	while (i != 0)
-	{
-		ft_putchar_fd(j / i + '0', fd);
-		j = j % i;
-		i = i / 10;
-	}
-}
+#endif
