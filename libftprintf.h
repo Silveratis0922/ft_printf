@@ -6,7 +6,7 @@
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 11:09:59 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/17 16:42:30 by tchantro         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:20:37 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 int	ft_printf(const char *s, ...);
 int	ft_putchar_fd(char c, int fd);
-void	ft_puthexa_fd(int n,char *str, int fd);
+int	ft_puthexa_fd(unsigned int n,char *str, int fd);
 int	ft_putnbr_fd(int n, int fd);
 int	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *str);

@@ -6,7 +6,7 @@
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 17:49:31 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/17 17:07:24 by tchantro         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:35:36 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_putstr_fd(char *s, int fd)
 	int	i;
 
 	i = 0;
+	if (s == NULL)
+		s = "(null)";
 	while (s[i])
 	{
 		write (fd, &s[i], 1);

@@ -6,13 +6,13 @@
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:04:06 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/17 14:27:59 by tchantro         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:31:50 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	nbr_lenhexa(int n)
+int	nbr_lenhexa(unsigned int n)
 {
 	int	i;
 
@@ -25,30 +25,27 @@ int	nbr_lenhexa(int n)
 	return (i);
 }
 
-void	ft_puthexa_fd(int n, char *str, int fd)
+int	ft_puthexa_fd(unsigned int n, char *str, int fd)
 {
-	int		i;
-	long	j;
+	int	i;
+	int	a;
 
-	j = (long)n;
-	i = nbr_lenhexa(j);
-	if (j < 0)
-	{
-		j = -j;
-		ft_putchar_fd('-', fd);
-	}
+	a = 0;
+	i = nbr_lenhexa(n);
 	while (i != 0)
 	{
-		ft_putchar_fd(str[j / i], fd);
-		j = j % i;
+		ft_putchar_fd(str[n / i], fd);
+		n = n % i;
 		i = i / 16;
+		a++;
 	}
+	return (a);
 }
 /*
 int	main()
 {
-	int test = -4589213;
+	int test = 0;
 
-	ft_puthexa(test, 1);
+	ft_puthexa_fd(test, "0123456789abcdef", 1);
 	return (0);
 }*/

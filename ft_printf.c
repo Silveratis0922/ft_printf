@@ -6,7 +6,7 @@
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/09 14:10:08 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/17 17:09:08 by tchantro         ###   ########.fr       */
+/*   Updated: 2022/06/17 17:20:54 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ int	converts(const char *s, int i, va_list args)
 		return (ft_putnbr_fd(va_arg(args, int), 1));
 	else if (s[i] == 'u')
 		return (ft_putnbr_unsigned_fd(va_arg(args, unsigned int), 1));
-	/*else if (s[i] == 'x')
-		ft_puthexa_fd(va_arg(args, int), "0123456789abcdef", 1);
+	else if (s[i] == 'x')
+		return (ft_puthexa_fd(va_arg(args, unsigned int), "0123456789abcdef", 1));
 	else if (s[i] == 'X')
-		ft_puthexa_fd(va_arg(args, int), "0123456789ABCDEF", 1);*/
+		return (ft_puthexa_fd(va_arg(args, unsigned int), "0123456789ABCDEF", 1));
 	else if (s[i] == '%')
 		return (ft_putchar_fd('%', 1));
 	return (0);
@@ -103,8 +103,7 @@ int	ft_printf(const char *s, ...)
 		else if (s[i] == '%')
 		{
 			i++;
-			size = size + converts(s, i, args);
-			//size_count(s, i, size, args);	
+			size = size + converts(s, i, args);	
 		}
 		i++;
 	}
@@ -113,7 +112,7 @@ int	ft_printf(const char *s, ...)
 		size = -1;
 	return (size);
 }
-
+/*
 int	main()
 {
 //	ft_printf("test i:%i\ntest x:%x\ntest d:%d\ntest c:%c\ntest u:%u\ntest s:%s\n test X:%X\ntest %:%%", 896, 1478 , -102, 'f', 963852, "Tristan", 7412);
@@ -121,4 +120,4 @@ int	main()
 	//printf("%d\n", ft_printf("test s:%s", str));	
 	printf("%d\n", printf("test s:%s", str));
 	return (0);
-}
+}*/
