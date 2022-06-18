@@ -1,45 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned_fd.c                            :+:      :+:    :+:   */
+/*   p_pointer_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 16:39:13 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/18 13:32:59 by tchantro         ###   ########.fr       */
+/*   Created: 2022/06/18 08:55:47 by tchantro          #+#    #+#             */
+/*   Updated: 2022/06/18 11:26:54 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	nbr_len_unsigned(unsigned int n)
+int	p_pointer_fd(long unsigned int n, char *str, int fd)
 {
-	unsigned int	i;
+	int	a;
 
-	i = 1;
-	while (n / 10 != 0)
+	if (n == 0)
 	{
-		n = n / 10;
-		i = i * 10;
+		ft_putstr_fd("(nil)", fd);
+		return (5);
 	}
-	return (i);
-}
-
-int	ft_putnbr_unsigned_fd(unsigned int n, int fd)
-{
-	int		i;
-	long	j;
-	int		a;
-
-	j = (long)n;
-	i = nbr_len_unsigned(j);
-	a = 0;
-	while (i != 0)
+	else
 	{
-		ft_putchar_fd(j / i + '0', fd);
-		j = j % i;
-		i = i / 10;
-		a++;
+		a = 2;
+		ft_putstr_fd("0x", 1);
+		a = a + ft_puthexa_fd(n, str, fd);
 	}
 	return (a);
 }

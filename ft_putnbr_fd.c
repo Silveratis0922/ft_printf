@@ -6,7 +6,7 @@
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:04:06 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/17 16:24:42 by tchantro         ###   ########.fr       */
+/*   Updated: 2022/06/18 13:31:48 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_putnbr_fd(int n, int fd)
 {
 	int		i;
 	long	j;
-	int	a;
+	int		a;
 
 	j = (long)n;
 	i = nbr_len(j);
@@ -50,11 +50,3 @@ int	ft_putnbr_fd(int n, int fd)
 		return (a + 1);
 	return (a);
 }
-/*
-int	main()
-{
-	int test = 0;
-
-	ft_putnbr_fd(test, 1);
-	return (0);
-}*/

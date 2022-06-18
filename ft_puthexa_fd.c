@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned_fd.c                            :+:      :+:    :+:   */
+/*   ft_puthexa_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tchantro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 16:39:13 by tchantro          #+#    #+#             */
-/*   Updated: 2022/06/18 13:32:59 by tchantro         ###   ########.fr       */
+/*   Created: 2022/05/14 18:04:06 by tchantro          #+#    #+#             */
+/*   Updated: 2022/06/18 13:32:16 by tchantro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	nbr_len_unsigned(unsigned int n)
+size_t	nbr_lenhexa(size_t n)
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 1;
-	while (n / 10 != 0)
+	while (n / 16 != 0)
 	{
-		n = n / 10;
-		i = i * 10;
+		n = n / 16;
+		i = i * 16;
 	}
 	return (i);
 }
 
-int	ft_putnbr_unsigned_fd(unsigned int n, int fd)
+int	ft_puthexa_fd(size_t n, char *str, int fd)
 {
-	int		i;
-	long	j;
+	size_t	i;
 	int		a;
 
-	j = (long)n;
-	i = nbr_len_unsigned(j);
 	a = 0;
+	i = nbr_lenhexa(n);
 	while (i != 0)
 	{
-		ft_putchar_fd(j / i + '0', fd);
-		j = j % i;
-		i = i / 10;
+		ft_putchar_fd(str[n / i], fd);
+		n = n % i;
+		i = i / 16;
 		a++;
 	}
 	return (a);

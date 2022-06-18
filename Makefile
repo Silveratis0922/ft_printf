@@ -4,7 +4,7 @@ CC =  gcc
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_printf.c ft_putchar_fd.c ft_puthexa.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c ft_putnbr_unsigned_fd.c
+SRC = ft_printf.c ft_putchar_fd.c ft_puthexa_fd.c ft_putnbr_fd.c ft_putstr_fd.c ft_strlen.c ft_putnbr_unsigned_fd.c p_pointer_fd.c
 
 OBJ = $(SRC:.c=.o)
 
